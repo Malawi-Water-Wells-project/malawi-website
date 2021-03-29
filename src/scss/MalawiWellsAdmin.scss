@@ -1,0 +1,44 @@
+.login-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+
+  @media only screen and (min-width: 400px) {
+    .login-card {
+      min-width: 400px;
+      display: flex;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .login-card {
+      min-width: 250px;
+      display: flex;
+    }
+  }
+
+.title-container {
+  padding: 30px;
+  background-color: #005554;
+  margin-bottom: 30px;
+}
+.title-container h1 {
+  color: white;
+}
+
+.text-center.card {
+  box-shadow: 1px #888888;
+}
+.form-button {
+  margin-top: 15px;
+  background-color: #005554;
+  border: none;
+}
+.form-button:hover {
+  border: none;
+  background-color: #005553c9;
+  text-decoration: none;
+}

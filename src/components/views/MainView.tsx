@@ -9,14 +9,14 @@ import {
     Container,
     Card,
     CardBody} from 'reactstrap';
-import '../views/Views.css';
+
 
 interface TribeViewProps {};
 
 type TribeViewState = {
     tribeName: string;
-    tribeLongitude: number;
-    tribeLatitude: number;
+    tribeLongitude: string;
+    tribeLatitude: string;
 }
 
 class TribeView extends React.Component<TribeViewProps, TribeViewState> {
@@ -24,44 +24,36 @@ class TribeView extends React.Component<TribeViewProps, TribeViewState> {
     constructor(props: TribeViewProps) {
         super(props);
         this.state = {
-            tribecreate: {
-                name: "",
-                longitude: 0,
-                latitude: 0,
-            },    
+            tribeName:  "",
+            tribeLongitude: "",
+            tribeLatitude: "",
+                
         };
-    
     }
-
-    onCreateTribeInput = (e: SyntheticEvent<HTMLInputElement>) => {
-        const {value, name} = e.currentTarget;
-        this.setState({ tribecreate: { ...this.state.tribecreate, [name]: value } });
-    };
 
     onCreateTribeSubmit = async (e: SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault();
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify(this.state.tribecreate)
+            // body: JSON.stringify(this.state.tribecreate)
         };
         fetch('https://malawi.inabox.uk/api/tribe/create', requestOptions)
         .then(response => response.json())
         .then(response => {console.log(response)});
     };
 
-
     onTribeAdminInput = (e: SyntheticEvent<HTMLInputElement>) => {
         const {value, name} = e.currentTarget;
-        this.setState({ tribecreate: { ...this.state.tribecreate, [name]: value } });
+        // this.setState({ tribecreate: { ...this.state.tribecreate, [name]: value } });
     };
 
-    onTribeAdminSubmit = async (e: SyntheticEvent<HTMLFormElement>) => {
+    onTribeAdminSubmit = async (e: SyntheticEvent<HTMLButtonElement>) => {
         e.preventDefault();
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify(this.state.tribecreate)
+            // body: JSON.stringify(this.state.tribecreate)
         };
         fetch('https://malawi.inabox.uk/api/tribe/create', requestOptions)
         .then(response => response.json())
@@ -84,17 +76,23 @@ class TribeView extends React.Component<TribeViewProps, TribeViewState> {
                                 <form onSubmit={this.onCreateTribeSubmit}>
                                     <Label>Name:</Label>
                                     <InputGroup>
-                                        <Input onChange={this.onCreateTribeInput} type="text" name="name"></Input>
+                                        <Input onChange={(e) => this.setState({ tribeName: e.currentTarget.value })} type="text" name="name" />
                                     </InputGroup>
                                     <Label>Latitude:</Label>
                                     <InputGroup>
-                                        <Input onChange={this.onCreateTribeInput} type="text" name="latitude"></Input>
+                                        <Input onChange={(e) => this.setState({ tribeLatitude: e.currentTarget.value })} type="text" name="latitude" />
                                     </InputGroup>
                                     <Label>Longitude:</Label>
                                     <InputGroup>
-                                        <Input onChange={this.onCreateTribeInput} type="text" name="longitude"></Input>
+                                        <Input onChange={(e) => this.setState({ tribeLongitude: e.currentTarget.value })} type="text" name="longitude" />
                                     </InputGroup>
-                                    <Button className="form-button" variant="primary" onClick={(e) => this.onCreateTribeSubmit(e as any)}>Create</Button>
+                                    <Button 
+                                        className="form-button"
+                                        variant="primary"
+                                        type="submit"
+                                    >
+                                        Create
+                                    </Button>
                                 </form>
                                 </CardBody>
                             </Card>
@@ -103,7 +101,7 @@ class TribeView extends React.Component<TribeViewProps, TribeViewState> {
                             <Card>
                                 <CardBody>
                                 <h3>Create Tribe Admin</h3>
-                                <form onSubmit={this.onTribeAdminSubmit}>
+                                <form >
                                     <Label>Name:</Label>
                                     <InputGroup>
                                         <Input onChange={this.onTribeAdminInput} type="text" name="name"></Input>

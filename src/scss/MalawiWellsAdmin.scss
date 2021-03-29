@@ -1,44 +1,61 @@
+$primary: #005554;
+
+@import "bootstrap/scss/bootstrap.scss";
+
 .login-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%);
-  }
-
-  @media only screen and (min-width: 400px) {
-    .login-card {
-      min-width: 400px;
-      display: flex;
-    }
-  }
-
-  @media only screen and (max-width: 400px) {
-    .login-card {
-      min-width: 250px;
-      display: flex;
-    }
-  }
-
-.title-container {
-  padding: 30px;
-  background-color: #005554;
-  margin-bottom: 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
 }
-.title-container h1 {
-  color: white;
+
+@media only screen and (min-width: 400px) {
+  .login-card {
+    min-width: 400px;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .login-card {
+    min-width: 250px;
+    display: flex;
+  }
 }
 
 .text-center.card {
   box-shadow: 1px #888888;
 }
+
 .form-button {
   margin-top: 15px;
   background-color: #005554;
   border: none;
+
+  &:hover {
+    border: none;
+    background-color: #005553c9;
+    text-decoration: none;
+  }
 }
-.form-button:hover {
-  border: none;
-  background-color: #005553c9;
-  text-decoration: none;
+
+.card-link {
+  width: fit-content;
+  text-align: center;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  cursor: pointer;
+  transition: box-shadow 150ms ease-in-out, border-color 150ms ease-in-out,
+    transform 150ms ease-in-out;
+  border: 1px solid transparent;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-color: $primary;
+  }
+
+  &:focus {
+    border-color: $primary;
+  }
 }

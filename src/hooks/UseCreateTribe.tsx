@@ -9,10 +9,11 @@ interface Tribe {
 }
 
 function useCreateTribe() {
-    const [state, setState] = useState<Tribe>(defaultTribe);
+    // const [state, setState] = useState<Tribe>(defaultTribe);
 
-    const updateValues = (newValues: Partial<Tribe>) => {
-        setState((prevValue) => ({...prevValue, ...newValues}));
-    }
+    // const updateValues = (newValues: Partial<Tribe>) => {
+    //     setState((prevValue) => ({...prevValue, ...newValues}));
+    // }
 }
+
 export default useCreateTribe;

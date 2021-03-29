@@ -1,15 +1,11 @@
 import React from 'react';
-import './App.css';
+import './scss/MalawiWellsAdmin.scss';
 import Router from './components/functional/Router'
 
-class App extends React.Component {
-  render() {
-      return (
-          <>
-          <Router/>
-          </>
-      );
-  }
-}
+const App: React.FC = () => (
+  <>
+    <Router/>
+  </>
+);
 
 export default App;

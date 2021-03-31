@@ -1,0 +1,28 @@
+.lat-long-input {
+  display: flex;
+  max-width: 400px;
+  justify-content: space-between;
+
+  &__lat {
+    margin-right: 5px;
+    max-width: 195px;
+  }
+
+  &__long {
+    margin-left: 5px;
+    max-width: 195px;
+  }
+
+  &__current {
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    & > svg {
+      padding-right: 5px;
+      margin-bottom: 3px;
+      font-size: 25px;
+    }
+  }
+}

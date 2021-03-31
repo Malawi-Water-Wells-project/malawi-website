@@ -5,15 +5,22 @@ import Layout from "../components/Layout";
 
 const HomeView = React.lazy(() => import("../views/HomeView"));
 const LoginView = React.lazy(() => import("../views/LoginView"));
-const ManageTribesView = React.lazy(() => import("../views/ManageTribesView"));
+const ManageTribesView = React.lazy(
+  () => import("../views/tribes/ManageTribesView")
+);
+const CreateNewTribesView = React.lazy(
+  () => import("../views/tribes/CreateNewTribeView")
+);
+const CreateNewTribeSuccessfulView = React.lazy(
+  () => import("../views/tribes/CreateNewTribeSuccessfulView")
+);
 
-// const MainView = React.lazy(() => import("../views/MainView"));
 const PageNotFoundView = () => <>Page Not Found</>;
 
 const Router: React.FC = () => (
   <BrowserRouter>
     <Layout>
-      <Suspense fallback="Loading...">
+      <Suspense fallback={null}>
         <Switch>
           <Route path={Routes.HOME} component={HomeView} exact />
           <Route path={Routes.LOGIN} component={LoginView} exact />
@@ -22,7 +29,16 @@ const Router: React.FC = () => (
             component={ManageTribesView}
             exact
           />
-          <Route component={PageNotFoundView} />
+          <Route
+            path={Routes.CREATE_NEW_TRIBE}
+            component={CreateNewTribesView}
+            exact
+          />
+          <Route
+            path={Routes.CREATE_NEW_TRIBE_SUCCESS}
+            component={CreateNewTribeSuccessfulView}
+            exact
+          />
         </Switch>
       </Suspense>
     </Layout>

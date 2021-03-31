@@ -1,6 +1,13 @@
 $primary: #005554;
+$feature: lighten(desaturate($primary, 25), 10);
+
+$font-family-sans-serif: Lexend, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 @import "bootstrap/scss/bootstrap.scss";
+@import "./partials/animations";
+@import "./partials/typography";
+@import "./partials/layout";
+@import "./partials/forms";
 
 .login-container {
   position: fixed;
@@ -58,4 +65,12 @@ $primary: #005554;
   &:focus {
     border-color: $primary;
   }
+
+  @media screen and (max-width: 575px) {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 }
+
+@import "./partials/overrides";

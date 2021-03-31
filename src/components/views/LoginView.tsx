@@ -1,34 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { InputGroup, Input, Button, Label, Card, CardBody } from "reactstrap";
+import { Button, Form, Card } from "react-bootstrap";
 
-const HomeView: React.FC = () => {
+const LoginView: React.FC = () => {
   return (
     <>
       <div className="login-container">
         <Card className="login-card">
-          <CardBody>
+          <Card.Body>
             <h3>Login</h3>
-            <form>
-              <Label>Username:</Label>
-              <InputGroup>
-                <Input type="text" name="latitude"></Input>
-              </InputGroup>
-              <Label>Password:</Label>
-              <InputGroup>
-                <Input type="password" name="longitude"></Input>
-              </InputGroup>
+            <Form>
+              <Form.Group>
+                <Form.Label>Username</Form.Label>
+                <Form.Control type="text" />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" />
+              </Form.Group>
               <Link to={{ pathname: "/MainView" }}>
                 <Button className="form-button" variant="primary">
                   Create
                 </Button>
               </Link>
-            </form>
-          </CardBody>
+            </Form>
+          </Card.Body>
         </Card>
       </div>
     </>
   );
 };
 
-export default HomeView;
+export default LoginView;

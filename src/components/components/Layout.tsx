@@ -1,16 +1,47 @@
-import React, { useState } from "react";
-import { Container, Navbar, NavbarBrand, NavbarToggler } from "reactstrap";
+import React from "react";
+import { Breadcrumb, Container } from "react-bootstrap";
+import { useHistory, useLocation } from "react-router-dom";
+import { AppBreadcrumbs } from "../../core/Constants";
+import AppNavbar from "./Navbar";
 
-const Layout: React.FC = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+interface LayoutProps {
+  breadcrumbs?: Array<{ text: string; to: string }>;
+}
+
+const BreadcrumbNav: React.FC<{ route: string }> = ({ route }) => {
+  const history = useHistory();
+
+  if (!(route in AppBreadcrumbs)) return null;
+
+  const breadcrumbs = AppBreadcrumbs[route as keyof typeof AppBreadcrumbs];
+  if (breadcrumbs === null) return null;
+
+  return (
+    <Breadcrumb>
+      {breadcrumbs.map(({ to, text }, index) => (
+        <Breadcrumb.Item
+          key={text}
+          onClick={() => history.push(to)}
+          active={index === breadcrumbs.length - 1}
+        >
+          {text}
+        </Breadcrumb.Item>
+      ))}
+    </Breadcrumb>
+  );
+};
+
+const Layout: React.FC<LayoutProps> = ({ children, breadcrumbs }) => {
+  const location = useLocation();
 
   return (
     <>
-      <Navbar color="primary" dark expand="md" className="mb-4">
-        <NavbarBrand>Malawi Admin</NavbarBrand>
-        <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
-      </Navbar>
-      <Container fluid>{children}</Container>
+      <AppNavbar />
+
+      <Container fluid>
+        <BreadcrumbNav route={location.pathname} />
+        {children}
+      </Container>
     </>
   );
 };

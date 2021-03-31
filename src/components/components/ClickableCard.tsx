@@ -1,18 +1,18 @@
-import React from "react";
-import { Card, CardProps } from "reactstrap";
+import React, { HTMLProps, KeyboardEvent } from "react";
+import { Card, CardProps } from "react-bootstrap";
 
-const ClickableCard: React.FC<CardProps> = (props) => (
+const ClickableCard: React.FC<CardProps & HTMLProps<HTMLDivElement>> = ({
+  className,
+  ...rest
+}) => (
   <Card
-    className="card-link"
-    onKeyPress={(e) => {
+    tabIndex={0}
+    className={className ? `card-link ${className}` : "card-link"}
+    onKeyPress={(e: KeyboardEvent<HTMLDivElement>) => {
       if (e.key === "Enter") e.currentTarget.click();
     }}
-    {...props}
+    {...rest}
   />
 );
-
-ClickableCard.defaultProps = {
-  tabIndex: 0,
-};
 
 export default ClickableCard;

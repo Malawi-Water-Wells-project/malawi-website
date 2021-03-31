@@ -1,0 +1,25 @@
+.page-heading {
+  font-weight: 400;
+}
+
+.feature-text {
+  padding-left: 15px;
+  border-left: 6px solid $feature;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 20px;
+  color: transparentize(#000, 0.1);
+}
+
+.hint {
+  color: #545454;
+  margin-bottom: 5px;
+}
+
+.error {
+  font-weight: 500;
+  color: darken($danger, 20);
+  margin-bottom: 10px;
+}

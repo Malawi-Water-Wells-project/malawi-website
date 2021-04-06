@@ -11,8 +11,6 @@ class AuthClient {
   private static AuthTokenKey = "authToken";
   private static RefreshTokenKey = "refreshToken";
 
-  constructor() {}
-
   public async getToken(): Promise<string> {
     const authToken = localStorage.getItem(AuthClient.AuthTokenKey);
     if (this.isTokenValid(authToken)) {

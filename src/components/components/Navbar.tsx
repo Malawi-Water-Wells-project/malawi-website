@@ -2,12 +2,10 @@ import React from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useHistory } from "react-router";
 import { Routes } from "../../core/Constants";
-import { useAppState, useAppStateSelector } from "../../state/StateContext";
-import { User } from "../../types/APITypes";
+import { useAppStateSelector } from "../../state/StateContext";
 
 const AppNavbar: React.FC = () => {
   const history = useHistory();
-  const [state] = useAppState();
   const user = useAppStateSelector((state) => state.user.currentUser);
 
   const navigate = (route: string) => (e: any) => {
@@ -28,6 +26,9 @@ const AppNavbar: React.FC = () => {
               <NavDropdown id="navbar-tribes-dropdown" title="Tribes">
                 <NavDropdown.Item onClick={navigate(Routes.CREATE_NEW_TRIBE)}>
                   New Tribe
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={navigate(Routes.CREATE_NEW_TRIBE)}>
+                  Lookup Tribe
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>

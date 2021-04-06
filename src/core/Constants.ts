@@ -1,11 +1,10 @@
-import { APIRouteInfo } from "../types/APITypes";
-
 export const Routes = {
   HOME: "/",
   LOGIN: "/login",
   MANAGE_TRIBES: "/tribes",
   CREATE_NEW_TRIBE: "/tribes/create",
   CREATE_NEW_TRIBE_SUCCESS: "/tribes/create/success",
+  TRIBE_SEARCH: "/tribes/search",
 } as const;
 
 export const AppBreadcrumbs: Record<
@@ -28,6 +27,11 @@ export const AppBreadcrumbs: Record<
     { text: "Tribes", to: Routes.MANAGE_TRIBES },
     { text: "New Tribe", to: Routes.CREATE_NEW_TRIBE },
     { text: "Success", to: Routes.CREATE_NEW_TRIBE_SUCCESS },
+  ],
+  [Routes.TRIBE_SEARCH]: [
+    { text: "Home", to: Routes.HOME },
+    { text: "Tribes", to: Routes.MANAGE_TRIBES },
+    { text: "Tribe Search", to: Routes.TRIBE_SEARCH },
   ],
 };
 

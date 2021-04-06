@@ -32,9 +32,12 @@ const ManageTribesView: React.FC = () => {
           </Card.Text>
         </Card.Body>
       </ClickableCard>
-      <ClickableCard className="fade-in">
+      <ClickableCard
+        className="fade-in"
+        onClick={() => history.push(Routes.CREATE_TRIBE_ADMIN)}
+      >
         <Card.Body>
-          <Card.Title>Lookup Tribe</Card.Title>
+          <Card.Title>Create Tribe Admin</Card.Title>
           <Card.Text>
             <Search size={96} />
           </Card.Text>

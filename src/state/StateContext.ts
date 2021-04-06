@@ -8,4 +8,10 @@ const StateContext = createContext<StateContextType>([initialState, () => {}]);
 
 export const useAppState = () => useContext(StateContext);
 
+export const useAppDispatch = () => useContext(StateContext)[1];
+
+export const useAppStateSelector = <T extends unknown>(
+  selector: (state: IState) => T
+) => selector(useAppState()[0]);
+
 export default StateContext;

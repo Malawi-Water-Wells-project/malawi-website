@@ -9,30 +9,18 @@ $font-family-sans-serif: Lexend, "Helvetica Neue", Helvetica, Arial, sans-serif;
 @import "./partials/layout";
 @import "./partials/forms";
 
+html,
+body,
+#root {
+  min-height: 100vh;
+}
+
 .login-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
-}
-
-@media only screen and (min-width: 400px) {
-  .login-card {
-    min-width: 400px;
-    display: flex;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .login-card {
-    min-width: 250px;
-    display: flex;
-  }
-}
-
-.text-center.card {
-  box-shadow: 1px #888888;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20vh;
+  width: 100%;
 }
 
 .form-button {
@@ -70,6 +58,17 @@ $font-family-sans-serif: Lexend, "Helvetica Neue", Helvetica, Arial, sans-serif;
     width: 100%;
     margin-left: 0 !important;
     margin-right: 0 !important;
+  }
+}
+
+.card {
+  &--login {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  &--shadow {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
 }
 

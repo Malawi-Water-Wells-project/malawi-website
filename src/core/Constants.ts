@@ -1,3 +1,5 @@
+import { APIRouteInfo } from "../types/APITypes";
+
 export const Routes = {
   HOME: "/",
   LOGIN: "/login",
@@ -40,4 +42,27 @@ export const AppBreadcrumbs: Record<
     { text: "Create Admin", to: Routes.CREATE_TRIBE_ADMIN},
     { text: "Success", to: Routes.CREATE_TRIBE_ADMIN_SUCCESS}
   ]
+};
+
+export const APIBaseURL = "https://api.staging.africawater.org";
+
+const formatRoute = (route: string) => `${APIBaseURL}${route}`;
+
+export const APIRoutes = {
+  AUTHORIZE: {
+    route: formatRoute("/auth/authorize"),
+    protected: false,
+  },
+  LOGIN: {
+    route: formatRoute("/auth/login"),
+    protected: false,
+  },
+  USER: {
+    route: formatRoute("/auth/user"),
+    protected: true,
+  },
+  CREATE_TRIBE: {
+    route: formatRoute("/tribe/create"),
+    protected: true,
+  },
 };

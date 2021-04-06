@@ -2,6 +2,7 @@ import React from "react";
 import { Breadcrumb, Container } from "react-bootstrap";
 import { useHistory, useLocation } from "react-router-dom";
 import { AppBreadcrumbs } from "../../core/Constants";
+import { useAppStateSelector } from "../../state/StateContext";
 import AppNavbar from "./Navbar";
 
 interface LayoutProps {
@@ -10,7 +11,9 @@ interface LayoutProps {
 
 const BreadcrumbNav: React.FC<{ route: string }> = ({ route }) => {
   const history = useHistory();
+  const user = useAppStateSelector((state) => state.user.currentUser);
 
+  if (user === null) return null;
   if (!(route in AppBreadcrumbs)) return null;
 
   const breadcrumbs = AppBreadcrumbs[route as keyof typeof AppBreadcrumbs];

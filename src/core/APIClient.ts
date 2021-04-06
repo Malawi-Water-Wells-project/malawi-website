@@ -2,7 +2,7 @@ import {
   APIAuthorizeResponse,
   APILoginResponse,
   APIRouteInfo,
-  APIUserResponse
+  APIUserResponse,
 } from "../types/APITypes";
 import { TribeAdmin } from "../types/TribeAdminTypes";
 import { Tribe } from "../types/TribeTypes";
@@ -88,18 +88,22 @@ class TribeAPIClient extends AbstractAPIClient {
 
 class TribeAdminAPIClient extends AbstractAPIClient {
   //route needs updating
-  private static CREATE_TRIBE_ADMIN_ROUTE = "/tribe/${tribe_id}/admin"
 
-  async createTribeAdmin(tribeAdmin: Pick<TribeAdmin, "name" | "username" | "password">) {
+  async createTribeAdmin(
+    tribeAdmin: Pick<TribeAdmin, "name" | "username" | "password">
+  ) {
     const response = await this.performFetch(
-      TribeAdminAPIClient.CREATE_TRIBE_ADMIN_ROUTE,
-      { method: "post", body: JSON.stringify(tribeAdmin)}
+      APIRoutes.CREATE_TRIBE_ADMIN("tribeId"),
+      {
+        method: "POST",
+        body: JSON.stringify(tribeAdmin),
+      }
     );
 
     const body = await response.json();
 
     return {
-      success:response.ok,
+      success: response.ok,
       tribeAdmin: body.tribeAdmin as TribeAdmin,
     };
   }

@@ -69,4 +69,8 @@ export const APIRoutes = {
     route: formatRoute("/tribe/create"),
     protected: true,
   },
+  CREATE_TRIBE_ADMIN: (tribeId: string) => ({
+    route: formatRoute(`/tribe/${tribeId}/create`),
+    protected: true,
+  }),
 };

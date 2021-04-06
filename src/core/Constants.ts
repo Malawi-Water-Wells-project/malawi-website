@@ -4,6 +4,8 @@ export const Routes = {
   MANAGE_TRIBES: "/tribes",
   CREATE_NEW_TRIBE: "/tribes/create",
   CREATE_NEW_TRIBE_SUCCESS: "/tribes/create/success",
+  CREATE_TRIBE_ADMIN: "/tribes/create admin/",
+  CREATE_TRIBE_ADMIN_SUCCESS: "tribes/create admin/success"
 } as const;
 
 export const AppBreadcrumbs: Record<
@@ -27,4 +29,15 @@ export const AppBreadcrumbs: Record<
     { text: "New Tribe", to: Routes.CREATE_NEW_TRIBE },
     { text: "Success", to: Routes.CREATE_NEW_TRIBE_SUCCESS },
   ],
+  [Routes.CREATE_TRIBE_ADMIN]: [
+    { text: "Home", to: Routes.HOME },
+    { text: "Tribes", to: Routes.MANAGE_TRIBES },
+    { text: "Create Admin", to: Routes.CREATE_TRIBE_ADMIN}
+  ],
+  [Routes.CREATE_TRIBE_ADMIN_SUCCESS]: [
+    { text: "Home", to: Routes.HOME },
+    { text: "Tribes", to: Routes.MANAGE_TRIBES },
+    { text: "Create Admin", to: Routes.CREATE_TRIBE_ADMIN},
+    { text: "Success", to: Routes.CREATE_TRIBE_ADMIN_SUCCESS}
+  ]
 };

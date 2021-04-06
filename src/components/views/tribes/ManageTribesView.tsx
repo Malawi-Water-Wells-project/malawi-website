@@ -17,9 +17,11 @@ const ManageTribesView: React.FC = () => {
           <Card.Title>Create New Tribe</Card.Title>
         </Card.Body>
       </ClickableCard>
-      <ClickableCard className="fade-in">
+      <ClickableCard className="fade-in"
+        onClick={() => history.push(Routes.CREATE_TRIBE_ADMIN)}
+      >
         <Card.Body>
-          <Card.Title>Create New Tribe</Card.Title>
+          <Card.Title>Create Tribe Admin</Card.Title>
         </Card.Body>
       </ClickableCard>
     </CardDeck>

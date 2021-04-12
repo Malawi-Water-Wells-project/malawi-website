@@ -1,5 +1,7 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
+import { AppBreadcrumbs } from "../../../core/Constants";
+import useBreadcrumbs from "../../../hooks/UseBreadcrumbs";
 import useCreateTribeAdmin from "../../../hooks/UseCreateTribeAdmin";
 import ReadingWidth from "../../components/ReadingWidth";
 
@@ -16,6 +18,7 @@ const CreateTribeAdminView: React.FC = () => {
     usernameErrors,
     passwordErrors,
   } = useCreateTribeAdmin();
+  useBreadcrumbs(AppBreadcrumbs.CREATE_NEW_TRIBE);
 
   return (
     <>

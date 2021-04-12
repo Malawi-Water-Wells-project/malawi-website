@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router";
-import { Routes } from "../../../core/Constants";
+import { AppBreadcrumbs, Routes } from "../../../core/Constants";
+import useBreadcrumbs from "../../../hooks/UseBreadcrumbs";
 import { useAppState } from "../../../state/StateContext";
 import ReadingWidth from "../../components/ReadingWidth";
 
 const CreateNewTribeSuccessView: React.FC = () => {
   const [state] = useAppState();
   const history = useHistory();
+  useBreadcrumbs(AppBreadcrumbs.CREATE_NEW_TRIBE_SUCCESS);
 
   useEffect(() => {
     if (state.tribe.currentTribe === null) {

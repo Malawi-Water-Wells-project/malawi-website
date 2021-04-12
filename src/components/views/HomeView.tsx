@@ -3,10 +3,12 @@ import { useHistory } from "react-router-dom";
 import { Card, CardDeck } from "react-bootstrap";
 import { PeopleFill, LockFill } from "react-bootstrap-icons";
 import ClickableCard from "../components/ClickableCard";
-import { Routes } from "../../core/Constants";
+import { AppBreadcrumbs, Routes } from "../../core/Constants";
+import useBreadcrumbs from "../../hooks/UseBreadcrumbs";
 
 const CardView: React.FC = () => {
   const history = useHistory();
+  useBreadcrumbs(AppBreadcrumbs.HOME);
 
   return (
     <>

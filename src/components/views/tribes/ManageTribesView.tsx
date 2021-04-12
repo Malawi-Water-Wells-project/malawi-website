@@ -1,12 +1,14 @@
 import React from "react";
 import { Card, CardDeck } from "react-bootstrap";
 import { useHistory } from "react-router";
-import { Routes } from "../../../core/Constants";
+import { AppBreadcrumbs, Routes } from "../../../core/Constants";
 import ClickableCard from "../../components/ClickableCard";
 import { Plus, Search } from "react-bootstrap-icons";
+import useBreadcrumbs from "../../../hooks/UseBreadcrumbs";
 
 const ManageTribesView: React.FC = () => {
   const history = useHistory();
+  useBreadcrumbs(AppBreadcrumbs.MANAGE_TRIBES);
 
   return (
     <CardDeck>

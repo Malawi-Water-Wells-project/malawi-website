@@ -84,6 +84,28 @@ class TribeAPIClient extends AbstractAPIClient {
       tribe: body.tribe as Tribe,
     };
   }
+
+  async searchByLocation(latitude: number, longitude: number, radius: number) {
+    const response = await this.performFetch(
+      APIRoutes.SEARCH_TRIBES(latitude, longitude, radius),
+      { method: "GET" }
+    );
+
+    const body = await response.json();
+
+    return body.results as Tribe[];
+  }
+
+  async getTribeByID(publicID: string) {
+    const response = await this.performFetch(
+      APIRoutes.GET_TRIBE_BY_ID(publicID),
+      { method: "GET" }
+    );
+
+    const body = await response.json();
+
+    return body.tribe as Tribe;
+  }
 }
 
 class TribeAdminAPIClient extends AbstractAPIClient {

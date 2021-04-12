@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Form, Card } from "react-bootstrap";
+import useBreadcrumbs from "../../hooks/UseBreadcrumbs";
 import useLogin from "../../hooks/UseLogin";
 
 const LoginView: React.FC = () => {
@@ -12,6 +13,7 @@ const LoginView: React.FC = () => {
     isWorking,
     error,
   } = useLogin();
+  useBreadcrumbs([]);
 
   return (
     <div className="login-container">

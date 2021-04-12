@@ -25,6 +25,9 @@ const CreateTribeAdminView = React.lazy(
 const CreateTribeAdminSuccessView = React.lazy(
   () => import("../views/tribes/CreateTribeAdminSuccessView")
 );
+const ManageSingleTribeView = React.lazy(
+  () => import("../views/tribes/ManageSingleTribeView")
+);
 
 const PageNotFoundView = () => <>Page Not Found</>;
 
@@ -63,6 +66,11 @@ const Router: React.FC = () => (
         <ProtectedRoute
           path={Routes.CREATE_TRIBE_ADMIN_SUCCESS}
           component={CreateNewTribeSuccessfulView}
+          exact
+        />
+        <ProtectedRoute
+          path={Routes.MANAGE_SINGLE_TRIBE}
+          component={ManageSingleTribeView}
           exact
         />
         <Route component={PageNotFoundView} />

@@ -1,8 +1,7 @@
 import React from "react";
 import { Breadcrumb, Container } from "react-bootstrap";
 import { useHistory, useLocation } from "react-router-dom";
-import { AppBreadcrumbs } from "../../core/Constants";
-import { useAppStateSelector } from "../../state/StateContext";
+import { useAppState } from "../../state/StateContext";
 import AppNavbar from "./Navbar";
 
 interface LayoutProps {
@@ -11,21 +10,18 @@ interface LayoutProps {
 
 const BreadcrumbNav: React.FC<{ route: string }> = ({ route }) => {
   const history = useHistory();
-  const user = useAppStateSelector((state) => state.user.currentUser);
+  const [state] = useAppState();
 
-  if (user === null) return null;
-  if (!(route in AppBreadcrumbs)) return null;
-
-  const breadcrumbs = AppBreadcrumbs[route as keyof typeof AppBreadcrumbs];
-  if (breadcrumbs === null) return null;
+  if (state.user.currentUser === null) return null;
+  if (state.ui.breadcrumbs.length === 0) return null;
 
   return (
     <Breadcrumb>
-      {breadcrumbs.map(({ to, text }, index) => (
+      {state.ui.breadcrumbs.map(({ to, text }, index) => (
         <Breadcrumb.Item
           key={text}
           onClick={() => history.push(to)}
-          active={index === breadcrumbs.length - 1}
+          active={index === state.ui.breadcrumbs.length - 1}
         >
           {text}
         </Breadcrumb.Item>
@@ -40,7 +36,6 @@ const Layout: React.FC<LayoutProps> = ({ children, breadcrumbs }) => {
   return (
     <>
       <AppNavbar />
-
       <Container fluid>
         <BreadcrumbNav route={location.pathname} />
         {children}

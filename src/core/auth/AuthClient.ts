@@ -23,7 +23,7 @@ class AuthClient {
     if (this.isTokenValid(refreshToken)) {
       const newAuthToken = await this.refreshAuthToken(refreshToken);
       localStorage.setItem(AuthClient.AuthTokenKey, newAuthToken);
-      return newAuthToken;
+      return this.formatToken(newAuthToken);
     } else if (refreshToken !== null) {
       localStorage.removeItem(AuthClient.RefreshTokenKey);
     }

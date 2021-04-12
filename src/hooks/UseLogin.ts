@@ -9,7 +9,6 @@ const useLogin = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
-
   const [isWorking, setIsWorking] = useState<boolean>(false);
 
   const [state, dispatch] = useAppState();

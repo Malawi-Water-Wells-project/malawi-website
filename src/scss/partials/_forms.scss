@@ -26,3 +26,18 @@
     }
   }
 }
+
+.clickable-row {
+  cursor: pointer;
+  transition: background-color 50ms ease-in-out;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    background-color: rgba($secondary, 0.2) !important;
+  }
+
+  &:active {
+    background-color: rgba($secondary, 0.3) !important;
+  }
+}

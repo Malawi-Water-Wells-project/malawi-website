@@ -1,3 +1,6 @@
+import { Tribe } from "../types/TribeTypes";
+import { IBreadcrumb } from "../types/UITypes";
+
 export const Routes = {
   HOME: "/",
   LOGIN: "/login",
@@ -6,49 +9,57 @@ export const Routes = {
   CREATE_NEW_TRIBE_SUCCESS: "/tribes/create/success",
   TRIBE_SEARCH: "/tribes/search",
   CREATE_TRIBE_ADMIN: "/tribes/create-admin/",
-  CREATE_TRIBE_ADMIN_SUCCESS: "tribes/create-admin/success",
+  CREATE_TRIBE_ADMIN_SUCCESS: "/tribes/create-admin/success",
+  MANAGE_SINGLE_TRIBE: "/tribes/:tribeID/manage",
 } as const;
 
-export const AppBreadcrumbs: Record<
-  typeof Routes[keyof typeof Routes],
-  Array<{ text: string; to: string }> | null
-> = {
-  [Routes.HOME]: [{ text: "Home", to: Routes.HOME }],
-  [Routes.LOGIN]: null,
-  [Routes.MANAGE_TRIBES]: [
+export const AppBreadcrumbs = {
+  HOME: [{ text: "Home", to: Routes.HOME }],
+  LOGIN: [],
+  MANAGE_TRIBES: [
     { text: "Home", to: Routes.HOME },
     { text: "Tribes", to: Routes.MANAGE_TRIBES },
   ],
-  [Routes.CREATE_NEW_TRIBE]: [
+  CREATE_NEW_TRIBE: [
     { text: "Home", to: Routes.HOME },
     { text: "Tribes", to: Routes.MANAGE_TRIBES },
     { text: "New Tribe", to: Routes.CREATE_NEW_TRIBE },
   ],
-  [Routes.CREATE_NEW_TRIBE_SUCCESS]: [
+  CREATE_NEW_TRIBE_SUCCESS: [
     { text: "Home", to: Routes.HOME },
     { text: "Tribes", to: Routes.MANAGE_TRIBES },
     { text: "New Tribe", to: Routes.CREATE_NEW_TRIBE },
     { text: "Success", to: Routes.CREATE_NEW_TRIBE_SUCCESS },
   ],
-  [Routes.TRIBE_SEARCH]: [
+  TRIBE_SEARCH: [
     { text: "Home", to: Routes.HOME },
     { text: "Tribes", to: Routes.MANAGE_TRIBES },
     { text: "Tribe Search", to: Routes.TRIBE_SEARCH },
   ],
-  [Routes.CREATE_TRIBE_ADMIN]: [
+  CREATE_TRIBE_ADMIN: [
     { text: "Home", to: Routes.HOME },
     { text: "Tribes", to: Routes.MANAGE_TRIBES },
     { text: "Create Admin", to: Routes.CREATE_TRIBE_ADMIN },
   ],
-  [Routes.CREATE_TRIBE_ADMIN_SUCCESS]: [
+  CREATE_TRIBE_ADMIN_SUCCESS: [
     { text: "Home", to: Routes.HOME },
     { text: "Tribes", to: Routes.MANAGE_TRIBES },
     { text: "Create Admin", to: Routes.CREATE_TRIBE_ADMIN },
     { text: "Success", to: Routes.CREATE_TRIBE_ADMIN_SUCCESS },
   ],
+  MANAGE_SINGLE_TRIBE: (tribe: Tribe | null) => [
+    { text: "Home", to: Routes.HOME },
+    { text: "Tribes", to: Routes.MANAGE_TRIBES },
+    {
+      text: tribe ? tribe.name : "Manage Tribe",
+      to: tribe
+        ? Routes.MANAGE_SINGLE_TRIBE.replace(":tribeID", tribe.public_id)
+        : Routes.MANAGE_SINGLE_TRIBE,
+    },
+  ],
 };
 
-export const APIBaseURL = "https://api.staging.africawater.org";
+export const APIBaseURL = "http://localhost:5000";
 
 const formatRoute = (route: string) => `${APIBaseURL}${route}`;
 
@@ -71,6 +82,16 @@ export const APIRoutes = {
   },
   CREATE_TRIBE_ADMIN: (tribeId: string) => ({
     route: formatRoute(`/tribe/${tribeId}/create`),
+    protected: true,
+  }),
+  SEARCH_TRIBES: (latitude: number, longitude: number, radius: number) => ({
+    route: formatRoute(
+      `/tribe/search?type=location&latitude=${latitude}&longitude=${longitude}&radius=${radius}`
+    ),
+    protected: true,
+  }),
+  GET_TRIBE_BY_ID: (tribeID: string) => ({
+    route: formatRoute(`/tribe/${tribeID}`),
     protected: true,
   }),
 };

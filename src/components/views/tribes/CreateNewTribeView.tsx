@@ -3,6 +3,8 @@ import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import useCreateTribe from "../../../hooks/UseCreateTribe";
 import ReadingWidth from "../../components/ReadingWidth";
 import { GeoAltFill } from "react-bootstrap-icons";
+import useBreadcrumbs from "../../../hooks/UseBreadcrumbs";
+import { AppBreadcrumbs } from "../../../core/Constants";
 
 const CreateNewTribeView: React.FC = () => {
   const {
@@ -17,6 +19,7 @@ const CreateNewTribeView: React.FC = () => {
     nameErrors,
     locationErrors,
   } = useCreateTribe();
+  useBreadcrumbs(AppBreadcrumbs.CREATE_NEW_TRIBE);
 
   return (
     <>

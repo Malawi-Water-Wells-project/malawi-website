@@ -28,6 +28,13 @@ const CreateTribeAdminSuccessView = React.lazy(
 const ManageSingleTribeView = React.lazy(
   () => import("../views/tribes/ManageSingleTribeView")
 );
+const ManageWellsView = React.lazy(
+  () => import("../views/wells/ManageWellsView")
+);
+const BulkWellUpload = React.lazy(
+  () => import("../views/wells/BulkWellUpload")
+);
+const FindWellView = React.lazy(() => import("../views/wells/FindWellView"));
 
 const PageNotFoundView = () => <>Page Not Found</>;
 
@@ -71,6 +78,21 @@ const Router: React.FC = () => (
         <ProtectedRoute
           path={Routes.MANAGE_SINGLE_TRIBE}
           component={ManageSingleTribeView}
+          exact
+        />
+        <ProtectedRoute
+          path={Routes.MANAGE_WELLS}
+          component={ManageWellsView}
+          exact
+        />
+        <ProtectedRoute
+          path={Routes.BULK_WELL_UPLOAD}
+          component={BulkWellUpload}
+          exact
+        />
+        <ProtectedRoute
+          path={Routes.FIND_WELLS}
+          component={FindWellView}
           exact
         />
         <Route component={PageNotFoundView} />

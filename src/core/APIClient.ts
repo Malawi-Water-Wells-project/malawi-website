@@ -3,6 +3,8 @@ import {
   APILoginResponse,
   APIRouteInfo,
   APIUserResponse,
+  User,
+  Well,
 } from "../types/APITypes";
 import { TribeAdmin } from "../types/TribeAdminTypes";
 import { Tribe } from "../types/TribeTypes";
@@ -22,19 +24,22 @@ abstract class AbstractAPIClient {
 
   protected async performFetch(
     routeInfo: APIRouteInfo,
-    options: RequestInit = {}
+    options: RequestInit = {},
+    useDefaults: boolean = true
   ) {
     const headers: HeadersInit = {
-      ...this.defaultFetchOptions.headers,
+      ...(useDefaults ? this.defaultFetchOptions.headers : {}),
       Authorization: routeInfo.protected ? await AuthClient.getToken() : "",
       ...options.headers,
     };
 
     const mergedOptions = {
-      ...this.defaultFetchOptions,
+      ...(useDefaults ? this.defaultFetchOptions : {}),
       ...options,
       headers,
     };
+
+    console.log(mergedOptions);
 
     return fetch(routeInfo.route, mergedOptions);
   }
@@ -53,8 +58,9 @@ class AuthAPIClient extends AbstractAPIClient {
     };
   }
 
-  async user(): Promise<APIUserResponse> {
+  async user(): Promise<APIUserResponse | null> {
     const response = await this.performFetch(APIRoutes.USER);
+    if (!response.ok) return null;
     return response.json();
   }
 
@@ -106,6 +112,41 @@ class TribeAPIClient extends AbstractAPIClient {
 
     return body.tribe as Tribe;
   }
+
+  async getTribeAdminsByID(publicID: string): Promise<Array<User> | null> {
+    const response = await this.performFetch(
+      APIRoutes.GET_TRIBE_ADMINS(publicID),
+      { method: "GET" }
+    );
+    if (!response.ok) return null;
+
+    const body = await response.json();
+
+    return body.admins as User[];
+  }
+}
+
+class WellAPIClient extends AbstractAPIClient {
+  async uploadBulkWells(file: File) {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await this.performFetch(
+      APIRoutes.WELLS_BULK_UPLOAD,
+      { method: "POST", body: formData },
+      false
+    );
+
+    console.log(response);
+  }
+
+  async getAllWells(): Promise<Array<Well>> {
+    const response = await this.performFetch(APIRoutes.GET_WELLS, {
+      method: "GET",
+    });
+
+    return response.json();
+  }
 }
 
 class TribeAdminAPIClient extends AbstractAPIClient {
@@ -135,6 +176,7 @@ const APIClient = {
   tribe: new TribeAPIClient(),
   tribeAdmin: new TribeAdminAPIClient(),
   auth: new AuthAPIClient(),
+  well: new WellAPIClient(),
 };
 
 export default APIClient;

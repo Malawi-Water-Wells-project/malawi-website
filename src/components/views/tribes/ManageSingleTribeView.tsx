@@ -1,13 +1,12 @@
+import React from "react";
 import * as atlas from "azure-maps-control";
-import React, { useEffect, useRef } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import APIClient from "../../../core/APIClient";
 import { AppBreadcrumbs } from "../../../core/Constants";
-import useBreadcrumbs from "../../../hooks/UseBreadcrumbs";
 import { AppStateContext } from "../../../state/StateContext";
 import ReadingWidth from "../../components/ReadingWidth";
-import { triggerAsyncId } from "node:async_hooks";
 import "azure-maps-control/dist/atlas.min.css";
+import TribeAdminDetails from "../../components/tribes/TribeAdminDetails";
 
 class ManageSingleTribeView extends React.PureComponent<RouteComponentProps> {
   static contextType = AppStateContext;
@@ -89,8 +88,18 @@ class ManageSingleTribeView extends React.PureComponent<RouteComponentProps> {
 
     return (
       <ReadingWidth>
+        <span className="page-heading__caption">Manage a Single Tribe</span>
         <h1 className="page-heading">{state.tribe.currentTribe.name}</h1>
-        <div className="search-map mt-3" id="search-map" ref={this.mapRef} />
+        <div className="display-map mt-3" id="search-map" ref={this.mapRef} />
+        <TribeAdminDetails />
+        <details className="details">
+          <summary className="details__summary">Members</summary>
+          Test
+        </details>
+        <details className="details">
+          <summary className="details__summary">Associated Wells</summary>
+          Test
+        </details>
       </ReadingWidth>
     );
   }

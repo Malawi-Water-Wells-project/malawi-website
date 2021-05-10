@@ -25,13 +25,22 @@ const AppNavbar: React.FC = () => {
             <Nav className="mr-auto" navbar>
               <NavDropdown id="navbar-tribes-dropdown" title="Tribes">
                 <NavDropdown.Item onClick={navigate(Routes.CREATE_NEW_TRIBE)}>
-                  New Tribe
+                  Create Tribe
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={navigate(Routes.CREATE_NEW_TRIBE)}>
-                  Lookup Tribe
+                <NavDropdown.Item onClick={navigate(Routes.TRIBE_SEARCH)}>
+                  Search for Tribes
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={navigate(Routes.CREATE_TRIBE_ADMIN)}>
+                  Assign Tribe Admins
+                </NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown id="navbar-wells-dropdown" title="Wells">
+                <NavDropdown.Item onClick={navigate(Routes.FIND_WELLS)}>
+                  Search for Wells
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
+
             <Nav navbar>
               <NavDropdown
                 alignRight

@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardDeck } from "react-bootstrap";
-import { Plus, Search } from "react-bootstrap-icons";
+import { Plus, Search, Upload } from "react-bootstrap-icons";
 import { useHistory } from "react-router";
 import { AppBreadcrumbs, Routes } from "../../../core/Constants";
 import useBreadcrumbs from "../../../hooks/UseBreadcrumbs";
@@ -11,7 +11,8 @@ const ManageWellsView: React.FC = () => {
   useBreadcrumbs(AppBreadcrumbs.MANAGE_WELLS);
 
   return (
-    <CardDeck>
+    <>
+    <CardDeck className="card-deck">
       <ClickableCard
         className="fade-in"
         onClick={() => history.push(Routes.CREATE_NEW_TRIBE)}
@@ -30,7 +31,7 @@ const ManageWellsView: React.FC = () => {
         <Card.Body>
           <Card.Title>Well Bulk Upload</Card.Title>
           <Card.Text>
-            <Search size={96} />
+            <Upload size={96} />
           </Card.Text>
         </Card.Body>
       </ClickableCard>
@@ -39,13 +40,27 @@ const ManageWellsView: React.FC = () => {
         onClick={() => history.push(Routes.CREATE_TRIBE_ADMIN)}
       >
         <Card.Body>
-          <Card.Title>Create Tribe Admin</Card.Title>
+          <Card.Title>Search Wells</Card.Title>
           <Card.Text>
             <Search size={96} />
           </Card.Text>
         </Card.Body>
       </ClickableCard>
     </CardDeck>
+    <CardDeck>
+            <ClickableCard
+        className="fade-in clickable-card"
+        onClick={() => history.push(Routes.CREATE_TRIBE_ADMIN)}
+      >
+        <Card.Body>
+          <Card.Title>Well Hygiene Bulk Upload</Card.Title>
+          <Card.Text>
+            <Upload size={96} />
+          </Card.Text>
+        </Card.Body>
+      </ClickableCard>
+    </CardDeck>
+    </>
   );
 };
 

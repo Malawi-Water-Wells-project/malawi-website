@@ -3,7 +3,7 @@ import { Card, CardDeck } from "react-bootstrap";
 import { useHistory } from "react-router";
 import { AppBreadcrumbs, Routes } from "../../../core/Constants";
 import ClickableCard from "../../components/ClickableCard";
-import { Plus, Search } from "react-bootstrap-icons";
+import { Plus, Search, PersonPlusFill } from "react-bootstrap-icons";
 import useBreadcrumbs from "../../../hooks/UseBreadcrumbs";
 
 const ManageTribesView: React.FC = () => {
@@ -41,7 +41,7 @@ const ManageTribesView: React.FC = () => {
         <Card.Body>
           <Card.Title>Create Tribe Admin</Card.Title>
           <Card.Text>
-            <Search size={96} />
+            <PersonPlusFill size={96} />
           </Card.Text>
         </Card.Body>
       </ClickableCard>

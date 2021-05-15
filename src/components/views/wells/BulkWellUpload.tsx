@@ -16,8 +16,9 @@ const BulkWellUpload: React.FC = () => {
       setError("You cannot upload multiple files at the same time.");
       return;
     }
+    console.log(files)
 
-    if (files[0].type !== "text/csv") {
+    if (!["text/csv", "application/vnd.ms-excel"].includes(files[0].type)) {
       setError("File is not a CSV.");
       return;
     }

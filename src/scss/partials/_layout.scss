@@ -5,3 +5,11 @@
   border-radius: 10px;
   margin-bottom: 50px;
 }
+
+.card-deck {
+  margin-bottom: 20px;
+}
+
+.clickable-card {
+  max-width: calc((100% / 3) - 30px);
+}

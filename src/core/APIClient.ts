@@ -140,6 +140,18 @@ class WellAPIClient extends AbstractAPIClient {
     console.log(response);
   }
 
+  async uploadBulkWellHygiene(file: File) {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await this.performFetch(
+      APIRoutes.WELLS_BULK_HYGIENE_UPLOAD,
+      { method: "POST", body: formData },
+      false
+    );
+    console.log(response);
+  }
+
   async getAllWells(): Promise<Array<Well>> {
     const response = await this.performFetch(APIRoutes.GET_WELLS, {
       method: "GET",

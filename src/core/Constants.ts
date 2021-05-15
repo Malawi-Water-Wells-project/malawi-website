@@ -126,4 +126,8 @@ export const APIRoutes = {
     route: formatRoute("/well/"),
     protected: true,
   },
+  WELLS_BULK_HYGIENE_UPLOAD: {
+    route: formatRoute("/well/bulkhygiene"),
+    protected: true,
+  }
 };

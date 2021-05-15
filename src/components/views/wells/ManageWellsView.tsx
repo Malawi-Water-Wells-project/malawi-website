@@ -50,7 +50,7 @@ const ManageWellsView: React.FC = () => {
     <CardDeck>
             <ClickableCard
         className="fade-in clickable-card"
-        onClick={() => history.push(Routes.CREATE_TRIBE_ADMIN)}
+        onClick={() => history.push(Routes.BULK_WELL_HYGIENE_UPLOAD)}
       >
         <Card.Body>
           <Card.Title>Well Hygiene Bulk Upload</Card.Title>

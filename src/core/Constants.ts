@@ -13,6 +13,7 @@ export const Routes = {
   MANAGE_WELLS: "/wells",
   BULK_WELL_UPLOAD: "/wells/bulk-upload",
   FIND_WELLS: "/wells/search",
+  BULK_WELL_HYGIENE_UPLOAD: "/wells/bulk-hygiene-upload"
 } as const;
 
 export const AppBreadcrumbs = {
@@ -67,6 +68,11 @@ export const AppBreadcrumbs = {
     { text: "Home", to: Routes.HOME },
     { text: "Wells", to: Routes.MANAGE_WELLS },
     { text: "Bulk Upload", to: Routes.BULK_WELL_UPLOAD },
+  ],
+  BULK_WELL_HYGIENE_UPLOAD: [
+    { text: "Home", to: Routes.HOME },
+    { text: "Wells", to: Routes.MANAGE_WELLS },
+    { text: "Bulk Hygiene Upload", to: Routes.BULK_WELL_HYGIENE_UPLOAD }
   ],
 };
 

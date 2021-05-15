@@ -34,7 +34,12 @@ const ManageWellsView = React.lazy(
 const BulkWellUpload = React.lazy(
   () => import("../views/wells/BulkWellUpload")
 );
-const FindWellView = React.lazy(() => import("../views/wells/FindWellView"));
+const FindWellView = React.lazy(
+  () => import("../views/wells/FindWellView")
+);
+const BulkWellHygieneUpload = React.lazy(
+  () => import("../views/wells/BulkWellHygieneUpload")
+);
 
 const PageNotFoundView = () => <>Page Not Found</>;
 
@@ -93,6 +98,11 @@ const Router: React.FC = () => (
         <ProtectedRoute
           path={Routes.FIND_WELLS}
           component={FindWellView}
+          exact
+        />
+        <ProtectedRoute
+          path={Routes.BULK_WELL_HYGIENE_UPLOAD}
+          component={BulkWellHygieneUpload}
           exact
         />
         <Route component={PageNotFoundView} />

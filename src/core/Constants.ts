@@ -109,15 +109,15 @@ export const APIRoutes = {
     protected: true,
   }),
   GET_TRIBE_ADMINS: (tribeID: string) => ({
-    route: formatRoute(`/tribe/${tribeID}/admins`),
+    route: formatRoute(`/tribes/${tribeID}/admins`),
     protected: true,
   }),
   WELLS_BULK_UPLOAD: {
-    route: formatRoute("/well/bulk"),
+    route: formatRoute("/wells/bulk"),
     protected: true,
   },
   GET_WELLS: {
-    route: formatRoute("/well/"),
+    route: formatRoute("/wells/"),
     protected: true,
   },
 };

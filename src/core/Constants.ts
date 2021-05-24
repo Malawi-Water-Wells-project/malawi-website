@@ -73,25 +73,25 @@ export const APIRoutes = {
     protected: false,
   },
   USER: {
-    route: formatRoute("/auth/user"),
+    route: formatRoute("/users/current"),
     protected: true,
   },
   CREATE_TRIBE: {
-    route: formatRoute("/tribe/create"),
+    route: formatRoute("/tribes/create"),
     protected: true,
   },
   CREATE_TRIBE_ADMIN: (tribeId: string) => ({
-    route: formatRoute(`/tribe/${tribeId}/create`),
+    route: formatRoute(`/tribes/${tribeId}/create`),
     protected: true,
   }),
   SEARCH_TRIBES: (latitude: number, longitude: number, radius: number) => ({
     route: formatRoute(
-      `/tribe/search?type=location&latitude=${latitude}&longitude=${longitude}&radius=${radius}`
+      `/tribes/search?type=location&latitude=${latitude}&longitude=${longitude}&radius=${radius}`
     ),
     protected: true,
   }),
   GET_TRIBE_BY_ID: (tribeID: string) => ({
-    route: formatRoute(`/tribe/${tribeID}`),
+    route: formatRoute(`/tribes/${tribeID}`),
     protected: true,
   }),
 };

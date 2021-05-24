@@ -37,7 +37,7 @@ const CardView: React.FC = () => {
         </ClickableCard>
         <ClickableCard
           className="fade-in"
-          onClick={() => history.push(Routes.MANAGE_TRIBES)}
+          onClick={() => history.push(Routes.MANAGE_WELLS)}
         >
           <Card.Body>
             <Card.Title>Manage Wells</Card.Title>

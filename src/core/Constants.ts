@@ -1,5 +1,4 @@
 import { Tribe } from "../types/TribeTypes";
-import { IBreadcrumb } from "../types/UITypes";
 
 export const Routes = {
   HOME: "/",
@@ -11,6 +10,9 @@ export const Routes = {
   CREATE_TRIBE_ADMIN: "/tribes/create-admin/",
   CREATE_TRIBE_ADMIN_SUCCESS: "/tribes/create-admin/success",
   MANAGE_SINGLE_TRIBE: "/tribes/:tribeID/manage",
+  MANAGE_WELLS: "/wells",
+  BULK_WELL_UPLOAD: "/wells/bulk-upload",
+  FIND_WELLS: "/wells/search",
 } as const;
 
 export const AppBreadcrumbs = {
@@ -57,9 +59,21 @@ export const AppBreadcrumbs = {
         : Routes.MANAGE_SINGLE_TRIBE,
     },
   ],
+  MANAGE_WELLS: [
+    { text: "Home", to: Routes.HOME },
+    { text: "Wells", to: Routes.MANAGE_WELLS },
+  ],
+  BULK_WELL_UPLOAD: [
+    { text: "Home", to: Routes.HOME },
+    { text: "Wells", to: Routes.MANAGE_WELLS },
+    { text: "Bulk Upload", to: Routes.BULK_WELL_UPLOAD },
+  ],
 };
 
-export const APIBaseURL = "http://localhost:5000";
+export const APIBaseURL = process.env.REACT_APP_API_BASE;
+if (!APIBaseURL) {
+  throw new Error("REACT_APP_API_BASE Not Set");
+}
 
 const formatRoute = (route: string) => `${APIBaseURL}${route}`;
 
@@ -94,4 +108,16 @@ export const APIRoutes = {
     route: formatRoute(`/tribes/${tribeID}`),
     protected: true,
   }),
+  GET_TRIBE_ADMINS: (tribeID: string) => ({
+    route: formatRoute(`/tribe/${tribeID}/admins`),
+    protected: true,
+  }),
+  WELLS_BULK_UPLOAD: {
+    route: formatRoute("/well/bulk"),
+    protected: true,
+  },
+  GET_WELLS: {
+    route: formatRoute("/well/"),
+    protected: true,
+  },
 };

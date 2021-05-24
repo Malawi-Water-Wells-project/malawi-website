@@ -1,5 +1,10 @@
 .page-heading {
   font-weight: 400;
+
+  &__caption {
+    font-size: 15px;
+    color: #555;
+  }
 }
 
 .feature-text {
@@ -11,6 +16,10 @@
   padding-bottom: 5px;
   font-size: 20px;
   color: transparentize(#000, 0.1);
+
+  &--error {
+    border-left-color: $danger;
+  }
 }
 
 .hint {

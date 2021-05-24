@@ -32,3 +32,14 @@ export type APIAuthorizeResponse = {
   status: "Success";
   token: string;
 };
+
+export type Well = {
+  id: number;
+  well_id: string;
+  country: string;
+  district: string;
+  sub_district: string;
+  village: string;
+  latitude: number;
+  longitude: number;
+};

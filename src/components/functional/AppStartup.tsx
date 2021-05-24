@@ -12,12 +12,16 @@ const AppStartup: React.FC = ({ children }) => {
   useEffect(() => {
     const performInitialAuth = async () => {
       try {
-        const { user } = await APIClient.auth.user();
-        dispatch({ type: "USER::LOGIN_SUCCESS", user });
-        if (history.location.pathname === Routes.LOGIN) {
-          history.replace(Routes.HOME);
+        const response = await APIClient.auth.user();
+        if (response) {
+          dispatch({ type: "USER::LOGIN_SUCCESS", user: response.user });
+          if (history.location.pathname === Routes.LOGIN) {
+            history.replace(Routes.HOME);
+          }
+        } else {
+          history.replace(Routes.LOGIN);
         }
-      } catch (error) {
+      } catch {
         history.replace(Routes.LOGIN);
       } finally {
         setComplete(true);

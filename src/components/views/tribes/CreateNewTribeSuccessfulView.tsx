@@ -19,10 +19,10 @@ const CreateNewTribeSuccessView: React.FC = () => {
 
   return (
     <ReadingWidth className="fade-in">
-      <h1 className="page-heading">Tribe successfully created</h1>
+      <h1 className="page-heading">Village successfully created</h1>
       <p className="lead">
-        You can now add tribe admins to this tribe, or you can continue later.
-        You can also go back and create a another tribe.
+        You can now add village admins to this village, or you can continue later.
+        You can also go back and create a another village.
         <br />
         All changes have been saved and can be resumed at a later date.
       </p>

@@ -34,17 +34,6 @@ const ManageWellsView: React.FC = () => {
           </Card.Text>
         </Card.Body>
       </ClickableCard>
-      <ClickableCard
-        className="fade-in"
-        onClick={() => history.push(Routes.CREATE_TRIBE_ADMIN)}
-      >
-        <Card.Body>
-          <Card.Title>Create Tribe Admin</Card.Title>
-          <Card.Text>
-            <Search size={96} />
-          </Card.Text>
-        </Card.Body>
-      </ClickableCard>
     </CardDeck>
   );
 };

@@ -88,7 +88,7 @@ class ManageSingleTribeView extends React.PureComponent<RouteComponentProps> {
 
     return (
       <ReadingWidth>
-        <span className="page-heading__caption">Manage a Single Tribe</span>
+        <span className="page-heading__caption">Manage a Single Village</span>
         <h1 className="page-heading">{state.tribe.currentTribe.name}</h1>
         <div className="display-map mt-3" id="search-map" ref={this.mapRef} />
         <TribeAdminDetails />

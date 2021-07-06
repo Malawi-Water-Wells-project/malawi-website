@@ -19,7 +19,7 @@ const CreateTribeAdminSuccessView: React.FC = () => {
 
   return (
     <ReadingWidth className="fade-in">
-      <h1 className="page-heading">Tribe Admin successfully created</h1>
+      <h1 className="page-heading">Village Admin successfully created</h1>
       <p className="lead">All changes have been saved.</p>
       <Button size="lg" className="mr-3">
         Go to home

@@ -17,7 +17,7 @@ const ManageTribesView: React.FC = () => {
         onClick={() => history.push(Routes.CREATE_NEW_TRIBE)}
       >
         <Card.Body>
-          <Card.Title>Create New Tribe</Card.Title>
+          <Card.Title>Create New Village</Card.Title>
           <Card.Text>
             <Plus size={96} />
           </Card.Text>
@@ -28,7 +28,7 @@ const ManageTribesView: React.FC = () => {
         onClick={() => history.push(Routes.TRIBE_SEARCH)}
       >
         <Card.Body>
-          <Card.Title>Tribe Search</Card.Title>
+          <Card.Title>Village Search</Card.Title>
           <Card.Text>
             <Search size={96} />
           </Card.Text>
@@ -39,7 +39,7 @@ const ManageTribesView: React.FC = () => {
         onClick={() => history.push(Routes.CREATE_TRIBE_ADMIN)}
       >
         <Card.Body>
-          <Card.Title>Create Tribe Admin</Card.Title>
+          <Card.Title>Create Village Admin</Card.Title>
           <Card.Text>
             <Search size={96} />
           </Card.Text>

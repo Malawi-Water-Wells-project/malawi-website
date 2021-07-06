@@ -23,9 +23,9 @@ const CreateTribeAdminView: React.FC = () => {
   return (
     <>
       <ReadingWidth className="fade-in">
-        <h1 className="page-heading">Create a new tribe admin</h1>
+        <h1 className="page-heading">Create a new village admin</h1>
         <p className="feature-text">
-          Use this form to create a new tribe admin on the system.
+          Use this form to create a new village admin on the system.
           <br />
         </p>
 
@@ -97,7 +97,7 @@ const CreateTribeAdminView: React.FC = () => {
             />
           </Form.Group>
           <Button type="submit" size="lg" variant="primary" className="mr-3">
-            Create Tribe Admin
+            Create Village Admin
           </Button>
           <Button size="lg" variant="secondary">
             Cancel

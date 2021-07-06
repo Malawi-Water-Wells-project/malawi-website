@@ -24,18 +24,18 @@ const CreateNewTribeView: React.FC = () => {
   return (
     <>
       <ReadingWidth className="fade-in">
-        <h1 className="page-heading">Create a new tribe</h1>
+        <h1 className="page-heading">Create a new village</h1>
         <p className="feature-text">
-          Use this form to create a new tribe on the system.
+          Use this form to create a new village on the system.
           <br />
-          Once a tribe has been added, tribe administrators can be set up.
+          Once a village has been added, village administrators can be set up.
         </p>
 
         <Form className="fade-in" onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label htmlFor="tribe-name">Name</Form.Label>
             <p className="hint" id="tribe-name-hint">
-              This is the name shown to the tribe on the App.
+              This is the name shown to the village on the App.
             </p>
             {nameErrors.length > 0 && (
               <p className="error fade-in">

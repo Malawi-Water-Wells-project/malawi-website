@@ -3,13 +3,13 @@ import { Tribe } from "../types/TribeTypes";
 export const Routes = {
   HOME: "/",
   LOGIN: "/login",
-  MANAGE_TRIBES: "/tribes",
-  CREATE_NEW_TRIBE: "/tribes/create",
-  CREATE_NEW_TRIBE_SUCCESS: "/tribes/create/success",
-  TRIBE_SEARCH: "/tribes/search",
-  CREATE_TRIBE_ADMIN: "/tribes/create-admin/",
-  CREATE_TRIBE_ADMIN_SUCCESS: "/tribes/create-admin/success",
-  MANAGE_SINGLE_TRIBE: "/tribes/:tribeID/manage",
+  MANAGE_TRIBES: "/villages",
+  CREATE_NEW_TRIBE: "/villages/create",
+  CREATE_NEW_TRIBE_SUCCESS: "/villages/create/success",
+  TRIBE_SEARCH: "/villages/search",
+  CREATE_TRIBE_ADMIN: "/villages/create-admin/",
+  CREATE_TRIBE_ADMIN_SUCCESS: "/villages/create-admin/success",
+  MANAGE_SINGLE_TRIBE: "/villages/:tribeID/manage",
   MANAGE_WELLS: "/wells",
   BULK_WELL_UPLOAD: "/wells/bulk-upload",
   FIND_WELLS: "/wells/search",
@@ -20,40 +20,40 @@ export const AppBreadcrumbs = {
   LOGIN: [],
   MANAGE_TRIBES: [
     { text: "Home", to: Routes.HOME },
-    { text: "Tribes", to: Routes.MANAGE_TRIBES },
+    { text: "Villages", to: Routes.MANAGE_TRIBES },
   ],
   CREATE_NEW_TRIBE: [
     { text: "Home", to: Routes.HOME },
-    { text: "Tribes", to: Routes.MANAGE_TRIBES },
-    { text: "New Tribe", to: Routes.CREATE_NEW_TRIBE },
+    { text: "Villages", to: Routes.MANAGE_TRIBES },
+    { text: "New Village", to: Routes.CREATE_NEW_TRIBE },
   ],
   CREATE_NEW_TRIBE_SUCCESS: [
     { text: "Home", to: Routes.HOME },
-    { text: "Tribes", to: Routes.MANAGE_TRIBES },
-    { text: "New Tribe", to: Routes.CREATE_NEW_TRIBE },
+    { text: "Villages", to: Routes.MANAGE_TRIBES },
+    { text: "New Village", to: Routes.CREATE_NEW_TRIBE },
     { text: "Success", to: Routes.CREATE_NEW_TRIBE_SUCCESS },
   ],
   TRIBE_SEARCH: [
     { text: "Home", to: Routes.HOME },
-    { text: "Tribes", to: Routes.MANAGE_TRIBES },
-    { text: "Tribe Search", to: Routes.TRIBE_SEARCH },
+    { text: "Villages", to: Routes.MANAGE_TRIBES },
+    { text: "Village Search", to: Routes.TRIBE_SEARCH },
   ],
   CREATE_TRIBE_ADMIN: [
     { text: "Home", to: Routes.HOME },
-    { text: "Tribes", to: Routes.MANAGE_TRIBES },
+    { text: "Villages", to: Routes.MANAGE_TRIBES },
     { text: "Create Admin", to: Routes.CREATE_TRIBE_ADMIN },
   ],
   CREATE_TRIBE_ADMIN_SUCCESS: [
     { text: "Home", to: Routes.HOME },
-    { text: "Tribes", to: Routes.MANAGE_TRIBES },
+    { text: "Villages", to: Routes.MANAGE_TRIBES },
     { text: "Create Admin", to: Routes.CREATE_TRIBE_ADMIN },
     { text: "Success", to: Routes.CREATE_TRIBE_ADMIN_SUCCESS },
   ],
   MANAGE_SINGLE_TRIBE: (tribe: Tribe | null) => [
     { text: "Home", to: Routes.HOME },
-    { text: "Tribes", to: Routes.MANAGE_TRIBES },
+    { text: "Villages", to: Routes.MANAGE_TRIBES },
     {
-      text: tribe ? tribe.name : "Manage Tribe",
+      text: tribe ? tribe.name : "Manage Village",
       to: tribe
         ? Routes.MANAGE_SINGLE_TRIBE.replace(":tribeID", tribe.public_id)
         : Routes.MANAGE_SINGLE_TRIBE,
@@ -91,11 +91,11 @@ export const APIRoutes = {
     protected: true,
   },
   CREATE_TRIBE: {
-    route: formatRoute("/tribes/create"),
+    route: formatRoute("/villages/create"),
     protected: true,
   },
   CREATE_TRIBE_ADMIN: (tribeId: string) => ({
-    route: formatRoute(`/tribes/${tribeId}/create`),
+    route: formatRoute(`/villages/${tribeId}/create`),
     protected: true,
   }),
   SEARCH_TRIBES: (latitude: number, longitude: number, radius: number) => ({
@@ -105,11 +105,11 @@ export const APIRoutes = {
     protected: true,
   }),
   GET_TRIBE_BY_ID: (tribeID: string) => ({
-    route: formatRoute(`/tribes/${tribeID}`),
+    route: formatRoute(`/villages/${tribeID}`),
     protected: true,
   }),
   GET_TRIBE_ADMINS: (tribeID: string) => ({
-    route: formatRoute(`/tribes/${tribeID}/admins`),
+    route: formatRoute(`/villages/${tribeID}/admins`),
     protected: true,
   }),
   WELLS_BULK_UPLOAD: {

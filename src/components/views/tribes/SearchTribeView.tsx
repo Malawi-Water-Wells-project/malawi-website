@@ -38,14 +38,14 @@ const SearchTribeView: React.FC = () => {
   return (
     <>
       <ReadingWidth className="fade-in">
-        <h1 className="page-heading">Search for a tribe</h1>
+        <h1 className="page-heading">Search for a village</h1>
         <p className="feature-text">
-          You can search for a tribe by name or location.
+          You can search for a village by name or location.
         </p>
         <h2 className="page-heading">Search by name</h2>
         <Form>
           <Form.Group>
-            <Form.Label>Tribe Name</Form.Label>
+            <Form.Label>Village Name</Form.Label>
             <Form.Control id="tribe-name"></Form.Control>
           </Form.Group>
           <Button>Search</Button>

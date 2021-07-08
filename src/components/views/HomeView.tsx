@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Card, CardDeck } from "react-bootstrap";
-import { PeopleFill, LockFill, WaterFill } from "react-bootstrap-icons";
+import { PeopleFill, LockFill, Moisture } from "react-bootstrap-icons";
 import ClickableCard from "../components/ClickableCard";
 import { AppBreadcrumbs, Routes } from "../../core/Constants";
 import useBreadcrumbs from "../../hooks/UseBreadcrumbs";
@@ -42,7 +42,7 @@ const CardView: React.FC = () => {
           <Card.Body>
             <Card.Title>Manage Wells</Card.Title>
             <Card.Text>
-             <WaterFill size={96} />
+              <Moisture size={96} />
             </Card.Text>
           </Card.Body>
         </ClickableCard>
